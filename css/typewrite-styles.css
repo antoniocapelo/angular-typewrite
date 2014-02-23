@@ -1,0 +1,68 @@
+/* AngularJS 'Typewrite' Directive - Styles*/
+
+/* Keyframes 'vendor prefix' versions: */
+@-webkit-keyframes blink-it {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes blink-it {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@-o-keyframes blink-it {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes blink-it {
+ 	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+/* Blinking class */
+
+.blink {
+	-webkit-animation: blink-it steps(1) 1s infinite;
+	-moz-animation: blink-it steps(1) 1s infinite;
+	-ms-animation: blink-it steps(1) 1s infinite;
+	-o-animation: blink-it steps(1) 1s infinite;
+	animation: blink-it steps(1) 1s infinite;
+}
