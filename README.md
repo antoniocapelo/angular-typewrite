@@ -4,7 +4,7 @@ AngularJS-Typewrite
 ## Description
 AngularJS directive that simulates the effect of typing on a text editor - with a blinking cursor.
 
-This directive works as an attribute to any HTML element, and it lets customize the speed/delay of its animation.
+This directive works as an attribute to any HTML element, and it lets customize the speed/delay of its animations.
 
 
 ##How to use:
