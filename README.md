@@ -15,9 +15,9 @@ Just add the desired text to the 'text' attribute of the element and the directi
 
 The following default values can be changed:
 
-* *initial delay*: add an 'initial-delay' property to the element 
-* *typing speed*: add an 'typing-delay' property to the element
-* *cursor blinking* speed: add an 'blink-delay' property to the element
+* **initial delay**: add an 'initial-delay' property to the element 
+* **typing speed**: add an 'typing-delay' property to the element
+* **cursor blinking** speed: add an 'blink-delay' property to the element
 
 ##Dependencies
 This directives only depends on the CSS file provided (typewriter-styles.css) in order to replicate the cursor blinking effect.
