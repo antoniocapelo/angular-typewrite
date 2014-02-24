@@ -21,7 +21,7 @@ The following default values can be changed:
 * turn off cursor blinking speed: set the 'blink-cursor' property  to "false"
 * cursor blinking speed: set a 'blink-delay' property for the element
 
-** Each time/delay value should be set either on seconds (1s) or milisseconds (1000)
+**Note:** Each time/delay value should be set either on seconds (1s) or milisseconds (1000)
 
 ##Dependencies
 This directives only depends on the CSS file provided (typewriter-styles.css) in order to replicate the cursor blinking effect.
