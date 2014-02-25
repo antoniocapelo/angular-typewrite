@@ -47,7 +47,7 @@
 					element.html(text.substring(0, i) + cursor);
 					i++;
 					timer = $timeout(function() {
-						updateIt(iElement, i, iAttrs.text);
+						updateIt(iElement, i, text);
 					}, typeDelay);
 					return;
 				} else {
