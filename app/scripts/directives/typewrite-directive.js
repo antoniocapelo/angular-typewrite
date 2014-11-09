@@ -71,10 +71,11 @@ angular
                     }, typeDelay);
                     return;
                 } else {
+                    charIndex--;
                     // check if it's an array
                     if (textArray && arrIndex < textArray.length - 1) {
                         timer = $timeout(function () {
-                            cleanAndRestart(element, charIndex, arrIndex, currentText);
+                            cleanAndRestart(element, charIndex, arrIndex, textArray[arrIndex]);
                         }, initialDelay);
                     } else {
                         if ($scope.callbackFn) {
@@ -104,7 +105,8 @@ angular
             function cleanAndRestart(element, charIndex, arrIndex, currentText) {
                 if (charIndex > 0) {
                     currentText = currentText.slice(0, -1);
-                    element.html(currentText.substring(0, currentText.length - 1) + cursor);
+                    // element.html(currentText.substring(0, currentText.length - 1) + cursor);
+                    element.html(currentText + cursor);
                     charIndex--;
                     timer = $timeout(function () {
                         cleanAndRestart(element, charIndex, arrIndex, currentText);
