@@ -37,6 +37,7 @@ The 'text' attribute can be a single string or an array of string. In case an ar
 - **specify cursor** : set a 'cursor' attribute for the element, specifying which cursor to use
 - **turn off cursor blinking**: set the 'blink-cursor' attribute  to "false"
 - **cursor blinking speed**: set a 'blink-delay' attribute for the element
+- **control the typing start with scope variable**: set a 'start' attribute for the element
 - **scope callback**: pass the desired scope callback as the 'callback-fn' attribute of the element
 
 **Note:** Each time/delay value should be set either on seconds (1s) or milisseconds (1000)
