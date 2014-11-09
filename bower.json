@@ -12,7 +12,10 @@
     "antoniocapelo <antonio.c.capelo@gmail.com>"
   ],
   "description": "AngularJS directive that simulates the effect of typing on a text editor",
-  "main": "dist/angular-typewrite.js",
+  "main": [
+    "dist/angular-typewrite.js",
+    "dist/angular-typewrite.css"
+  ],
   "keywords": [
     "angularjs",
     "typewrite",
