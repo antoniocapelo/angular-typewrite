@@ -19,6 +19,7 @@
  *  - specify cursor : set a 'cursor' attribute for the element, specifying which cursor to use
  *  - turn off cursor blinking: set the 'blink-cursor' attribute  to "false"
  *  - cursor blinking speed: set a 'blink-delay' attribute for the element
+ *  - scope callback: pass the desired scope callback as the 'callback-fn' attribute of the element
  *
  * Note:
  * Each time/delay value should be set either on seconds (1s) or milliseconds (1000)

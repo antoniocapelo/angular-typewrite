@@ -23,7 +23,7 @@ For the blinking effect, add the **angular-typewrite.css** file to your loaded s
 
 ##How to use
 
-Just add the desired text to the **'text' attribute** of the element and the directive takes care of the rest.
+Just add the **typewrite** attribute to the desired HTML element, passing the text that should print as the **'text' attribute** and the directive takes care of the rest.
 
 The 'text' attribute can be a single string or an array of string. In case an array is passed, the string on each index is erased so the next item can be printed. When the last index is reached, that string stays on the screen. (So if you want to erase the last string, just push an empty string to the end of the array).
 
