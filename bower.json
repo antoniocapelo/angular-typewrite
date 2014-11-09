@@ -25,6 +25,9 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "app",
+    "*.md",
+    "*.js",
     "node_modules",
     "bower_components",
     "test",
