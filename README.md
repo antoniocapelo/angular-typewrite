@@ -47,4 +47,4 @@ This directives only depends the core AngularJS file and on the CSS file provide
 
 ## Demo
 
-I created a [Codepen Demo](http://codepen.io/capelo/pen/Bmbgn) to show the directive working with different setups.
+I created a [Simple Demo](http://blog.antoniocapelo.com/angular-typewrite/) to show the directive working.
