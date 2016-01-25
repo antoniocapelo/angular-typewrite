@@ -64,7 +64,7 @@ angular
 
             function updateIt(element, charIndex, arrIndex, text) {
                 if (charIndex <= text.length) {
-                    element.html(text.substring(0, charIndex) + cursor);
+                    updateValue(element, text.substring(0, charIndex) + cursor);
                     charIndex++;
                     timer = $timeout(function () {
                         updateIt(element, charIndex, arrIndex, text);
@@ -93,12 +93,12 @@ angular
                         auxStyle = '-webkit-animation:blink-it steps(1) ' + blinkDelay + ' infinite;-moz-animation:blink-it steps(1) ' + blinkDelay + ' infinite ' +
                             '-ms-animation:blink-it steps(1) ' + blinkDelay + ' infinite;-o-animation:blink-it steps(1) ' + blinkDelay + ' infinite; ' +
                             'animation:blink-it steps(1) ' + blinkDelay + ' infinite;';
-                        element.html(text.substring(0, charIndex) + '<span class="blink" style="' + auxStyle + '">' + cursor + '</span>');
+                        updateValue(element, text.substring(0, charIndex) + '<span class="blink" style="' + auxStyle + '">' + cursor + '</span>');
                     } else {
-                        element.html(text.substring(0, charIndex) + '<span class="blink">' + cursor + '</span>');
+                        updateValue(element, text.substring(0, charIndex) + '<span class="blink">' + cursor + '</span>');
                     }
                 } else {
-                    element.html(text.substring(0, charIndex));
+                    updateValue(element, text.substring(0, charIndex));
                 }
             }
 
@@ -106,7 +106,7 @@ angular
                 if (charIndex > 0) {
                     currentText = currentText.slice(0, -1);
                     // element.html(currentText.substring(0, currentText.length - 1) + cursor);
-                    element.html(currentText + cursor);
+                    updateValue(element, currentText + cursor);
                     charIndex--;
                     timer = $timeout(function () {
                         cleanAndRestart(element, charIndex, arrIndex, currentText);
@@ -133,6 +133,13 @@ angular
                 if (typeof delay === 'string') {
                     return delay.charAt(delay.length - 1) === 's' ? delay : parseInt(delay.substring(0, delay.length - 1), 10) / 1000;
                 }
+            }
+
+            function updateValue(element, value) {
+                if (element.prop('nodeName').toUpperCase() === 'INPUT') {
+                    return element.val(value);
+                }
+                return element.html(value);
             }
 
             $scope.$on('$destroy', function () {
