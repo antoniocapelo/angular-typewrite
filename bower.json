@@ -2,7 +2,7 @@
   "name": "angular-typewrite",
   "version": "0.0.5",
   "dependencies": {
-    "angular": "~1.2.0"
+    "angular": "~1.5"
   },
   "appPath": "app",
   "homepage": "https://github.com/antoniocapelo/Angular-Typewrite",
