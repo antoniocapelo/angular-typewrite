@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="no-js">
+
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/angular-typewrite.css">
+        <link rel="stylesheet" href="styles/main.6958d3ff.css">
+
+        <body ng-app="angularJsTypewriteSiteApp">
+            <!--[if lt IE 7]>
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+            <!-- Add your site or application content here -->
+            <div class="container">
+                <div ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
+                <div class="footer">
+                    <p>Made with some free time by <a target="_blank" href="http://www.github.com/antoniocapelo">@antoniocapelo</a></p>
+                </div>
+            </div>
+            <!--[if lt IE 9]>
+                <script src="scripts/oldieshim.a466b7b1.js"></script>
+            <![endif]-->
+            <script src="bower_components/angular/angular.min.js"></script>
+            <script src="app/scripts/directives/typewrite-directive.js"></script>
+            <script src="scripts/scripts.js"></script>
+        </body>
+</html>

@@ -1,4 +1,5 @@
 node_modules
 .tmp
 .sass-cache
+*.swp
 bower_components
