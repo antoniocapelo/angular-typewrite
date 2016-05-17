@@ -29,6 +29,12 @@
     "node_modules",
     "bower_components",
     "test",
+    "scripts",
+    "Gruntfile.js",
+    "index.html",
+    "styles",
+    "views",
+    "favicon.ico",
     "tests"
   ]
 }
