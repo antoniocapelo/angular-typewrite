@@ -29,6 +29,19 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
+    babel: {
+        options: {
+            sourceMap: true,
+            presets: ['es2015']
+        },
+        dev: {
+            files: {
+                '.tmp/typewrite-module.js': '<%= yeoman.app %>/scripts/app.js',
+                '.tmp/typewrite-directive.js': '<%= yeoman.app %>/scripts/directives/typewrite-directive.js',
+            }
+        }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -37,7 +50,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
+        tasks: ['newer:jshint:all', 'babel:dev'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
@@ -271,8 +284,8 @@ module.exports = function (grunt) {
     concat: {
         dist: {
             src: [
-                '<%= yeoman.app %>/scripts/app.js',
-                '<%= yeoman.app %>/scripts/directives/*.js'
+                '.tmp/typewrite-module.js',
+                '.tmp/typewrite-directive.js'
             ],
             dest: '<%= yeoman.dist %>/angular-typewrite.js'
         }
@@ -390,6 +403,35 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    release: {
+        options: {
+            additionalFiles: ['bower.json'],
+            bump: true, //default: true
+            file: 'package.json', //default: package.json
+            add: true, //default: true
+            commit: true, //default: true
+            tag: true, //default: true
+            push: true, //default: true
+            pushTags: true, //default: true
+            npm: false, //default: true
+            npmtag: true, //default: no tag
+            indentation: '\t', //default: '  ' (two spaces)
+            folder: 'dist', //default project root
+            tagName: 'some-tag-<%= version %>', //default: '<%= version %>'
+            commitMessage: 'check out my release <%= version %>', //default: 'release <%= version %>'
+            tagMessage: 'tagging version <%= version %>', //default: 'Version <%= version %>',
+            beforeBump: [], // optional grunt tasks to run before file versions are bumped
+            afterBump: [], // optional grunt tasks to run after file versions are bumped
+            beforeRelease: [], // optional grunt tasks to run after release version is bumped up but before release is packaged
+            afterRelease: [], // optional grunt tasks to run after release is packaged
+            updateVars: [], // optional grunt config objects to update (this will update/set the version property on the object specified)
+            github: {
+                repo: 'antoniocapelo/angular-typewrite', //put your user/repo here
+                accessTokenVar: 'GITHUB_ACCESS_TOKEN' //ENVIRONMENT VARIABLE that contains GitHub Access Token
+            }
+        }
     }
   });
 
@@ -409,11 +451,6 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve:' + target]);
-  });
-
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
@@ -425,6 +462,7 @@ module.exports = function (grunt) {
 grunt.registerTask('build', [
     'clean:dist',
     'autoprefixer',
+    'babel',
     'concat',
     'cssmin',
     'uglify'
