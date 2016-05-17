@@ -1,6 +1,6 @@
 {
   "name": "angular-typewrite",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "dependencies": {
     "angular": "^1.2.0"
   },
@@ -22,8 +22,8 @@
   ],
   "license": "MIT",
   "ignore": [
-      "*",
-      "!dist/",
-      "!dist/*"
+    "*",
+    "!dist/",
+    "!dist/*"
   ]
 }

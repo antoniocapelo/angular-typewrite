@@ -1,6 +1,6 @@
 {
   "name": "angular-typewriter",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "AngularJS directive that simulates the effect of typing on a text editor",
   "main": "Gruntfile.js",
   "dependencies": {},
