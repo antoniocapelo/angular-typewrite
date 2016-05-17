@@ -11,6 +11,8 @@ module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('grunt-contrib-concat');
+
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -148,14 +150,14 @@ module.exports = function (grunt) {
     // Add vendor prefixed styles
     autoprefixer: {
       options: {
-        browsers: ['last 1 version']
+        browsers: ['last 5 versions', 'ie 8', 'ie 9']
       },
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/styles/',
+          cwd: '<%= yeoman.app %>/style',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: 'dist/'
         }]
       }
     },
@@ -175,8 +177,8 @@ module.exports = function (grunt) {
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
       options: {
-        sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
+        sassDir: '<%= yeoman.app %>/style',
+        cssDir: 'dist',
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%= yeoman.app %>/images',
         javascriptsDir: '<%= yeoman.app %>/scripts',
@@ -191,7 +193,9 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          generatedImagesDir: '<%= yeoman.dist %>/images/generated'
+          generatedImagesDir: '<%= yeoman.dist %>/images/generated',
+          sassDir: '<%= yeoman.app %>/style',
+          cssDir: 'dist',
         }
       },
       server: {
@@ -249,7 +253,7 @@ module.exports = function (grunt) {
       dist: {
         files: {
           '<%= yeoman.dist %>/angular-typewrite.css': [
-            '.tmp/styles/{,*/}*.css'
+            '<%= yeoman.dist %>/angular-typewrite.css'
           ]
         }
       }
@@ -420,28 +424,11 @@ module.exports = function (grunt) {
 
 grunt.registerTask('build', [
     'clean:dist',
-    'compass',
     'autoprefixer',
     'concat',
     'cssmin',
     'uglify'
   ]);
-  // grunt.registerTask('build', [
-  //   'clean:dist',
-  //   'wiredep',
-  //   'useminPrepare',
-  //   'concurrent:dist',
-  //   'autoprefixer',
-  //   'concat',
-  //   'ngAnnotate',
-  //   'copy:dist',
-  //   // 'cdnify',
-  //   'cssmin',
-  //   'uglify',
-  //   'filerev',
-  //   'usemin',
-  //   'htmlmin'
-  // ]);
 
   grunt.registerTask('default', [
     'newer:jshint',

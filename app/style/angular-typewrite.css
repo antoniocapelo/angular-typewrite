@@ -1,0 +1,14 @@
+@keyframes blink-it {
+    0% {
+        opacity: 1
+    }
+    50% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+.blink {
+    animation: blink-it steps(1) 1s infinite
+}
