@@ -43,7 +43,7 @@ The 'text' attribute can be a single string or an array of string. In case an ar
 **Note:** Each time/delay value should be set either on seconds (1s) or milisseconds (1000)
 
 ##Dependencies
-This directives only depends the core AngularJS file and on the CSS file provided (angular-typewrite.css) in order to replicate the cursor blinking effect.
+This directives only depends on the core AngularJS file and on the CSS file provided (angular-typewrite.css) in order to replicate the cursor blinking effect.
 
 ## Demo
 
