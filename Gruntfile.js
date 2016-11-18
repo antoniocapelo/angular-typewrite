@@ -7,11 +7,16 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+var wrapper1 = "(function (root, factory) { 'use strict'; if (typeof define === 'function' && define.amd) { define(['angular'], factory); } else if (typeof module !== 'undefined' && typeof module.exports === 'object') { module.exports = factory(require('angular')); } else { return factory(root.angular); } }(this, function (angular) { 'use strict'; var moduleName = 'angularTypewrite';\n";
+
+var wrapper2 = "\nreturn moduleName; }));\n";
+
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-remove');
 
 
   // Time how long tasks take. Can help when optimizing build times
@@ -20,7 +25,8 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist',
+    npmDist: 'npm-dist'
   };
 
   // Define the configuration for all the tasks
@@ -157,6 +163,16 @@ module.exports = function (grunt) {
           ]
         }]
       },
+      npmDist: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            '<%= yeoman.npmDist %>/{,*/}*',
+            '!<%= yeoman.npmDist %>/.git*'
+          ]
+        }]
+      },
       server: '.tmp'
     },
 
@@ -271,6 +287,7 @@ module.exports = function (grunt) {
         }
       }
     },
+
     uglify: {
       dist: {
         files: {
@@ -280,6 +297,15 @@ module.exports = function (grunt) {
         }
       }
     },
+    wrap: {
+        basic: {
+              src: ['app/scripts/directives/*.js'],
+              dest: 'npm-dist/',
+              options: {
+                      wrapper: [wrapper1, wrapper2]
+                    }
+            }
+    },
     // Concatenates all extensions files into a single file for distribution
     concat: {
         dist: {
@@ -288,6 +314,13 @@ module.exports = function (grunt) {
                 '.tmp/typewrite-directive.js'
             ],
             dest: '<%= yeoman.dist %>/angular-typewrite.js'
+        }
+    },
+    rename: {
+      main: {
+          files: [
+            {src: ['./npm-dist/app/scripts/directives/typewrite-directive.js'], dest: 'npm-dist/angular-typewrite.js'},
+                  ]
         }
     },
 
@@ -379,6 +412,18 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      npmDist: {
+        files: [{
+          expand: true,
+          flatten: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.npmDist %>',
+          src: [
+            'style/*'
+          ]
+        }]
       }
     },
 
@@ -463,6 +508,16 @@ grunt.registerTask('build', [
     'concat',
     'cssmin',
     'uglify'
+  ]);
+
+grunt.registerTask('npm-build', [
+    'clean:npmDist',
+    'autoprefixer',
+    'babel',
+    'cssmin',
+    'wrap',
+    'rename',
+    'copy:npmDist'
   ]);
 
   grunt.registerTask('default', [
