@@ -8,7 +8,7 @@ This directive works as an attribute to any HTML element, and it changes the spe
 
 
 ##Installation
-Just clone this repository or do ``bower install angular-typewrite --save``.
+Just clone this repository, do ``bower install angular-typewrite --save`` or ``npm install angular-typewriter --save``.
 After including the **angular-typewrite.js** file on your app, inject it 'angularTypewrite' as a dependency on your AngularJS module:
 
 	angular
@@ -19,7 +19,19 @@ After including the **angular-typewrite.js** file on your app, inject it 'angula
 		'dependencies',
 		'angularTypewrite']);
 
-For the blinking effect, add the **angular-typewrite.css** file to your loaded stylesheets.
+If you installed it by NPM, do:
+
+	var tw  = require('angular-typewriter');
+	angular
+		.module('yourAppName', [
+		'rest',
+		'of',
+		'your'
+		'dependencies',
+		tw]);
+
+
+NOTE: For the blinking effect, add the **angular-typewrite.css** file to your loaded stylesheets.
 
 ##How to use
 
