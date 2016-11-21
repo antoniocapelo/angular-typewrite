@@ -256,7 +256,7 @@ module.exports = function (grunt) {
         flow: {
           html: {
             steps: {
-              js: ['concat', 'uglifyjs'],
+              js: ['concat:dist', 'uglifyjs'],
               css: ['cssmin']
             },
             post: {}
@@ -299,8 +299,8 @@ module.exports = function (grunt) {
     },
     wrap: {
         basic: {
-              src: ['app/scripts/directives/*.js'],
-              dest: 'npm-dist/',
+              src: ['npm-dist/angular-typewrite.js'],
+              dest: '.',
               options: {
                       wrapper: [wrapper1, wrapper2]
                     }
@@ -314,6 +314,13 @@ module.exports = function (grunt) {
                 '.tmp/typewrite-directive.js'
             ],
             dest: '<%= yeoman.dist %>/angular-typewrite.js'
+        },
+        npmDist: {
+            src: [
+                '.tmp/typewrite-module.js',
+                '.tmp/typewrite-directive.js'
+            ],
+            dest: '<%= yeoman.npmDist %>/angular-typewrite.js'
         }
     },
     rename: {
@@ -505,7 +512,7 @@ grunt.registerTask('build', [
     'clean:dist',
     'autoprefixer',
     'babel',
-    'concat',
+    'concat:dist',
     'cssmin',
     'uglify'
   ]);
@@ -515,8 +522,8 @@ grunt.registerTask('npm-build', [
     'autoprefixer',
     'babel',
     'cssmin',
+    'concat:npmDist',
     'wrap',
-    'rename',
     'copy:npmDist'
   ]);
 
