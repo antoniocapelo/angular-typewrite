@@ -1,6 +1,6 @@
 {
   "name": "angular-typewriter",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "AngularJS directive that simulates the effect of typing on a text editor",
   "main": "./npm-dist/angular-typewrite.js",
   "dependencies": {
