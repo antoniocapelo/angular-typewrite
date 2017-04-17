@@ -7,7 +7,7 @@ AngularJS directive that simulates the effect of typing on a text editor - with 
 This directive works as an attribute to any HTML element, and it changes the speed/delay of its animation.
 
 
-##Installation
+## Installation
 Just clone this repository, do ``bower install angular-typewrite --save`` or ``npm install angular-typewriter --save``.
 After including the **angular-typewrite.js** file on your app, inject it 'angularTypewrite' as a dependency on your AngularJS module:
 
@@ -33,13 +33,13 @@ If you installed it by NPM, do:
 
 NOTE: For the blinking effect, add the **angular-typewrite.css** file to your loaded stylesheets.
 
-##How to use
+## How to use
 
 Just add the **typewrite** attribute to the desired HTML element, passing the text that should print as the **'text' attribute** and the directive takes care of the rest.
 
 The 'text' attribute can be a single string or an array of string. In case an array is passed, the string on each index is erased so the next item can be printed. When the last index is reached, that string stays on the screen. (So if you want to erase the last string, just push an empty string to the end of the array).
 
-##Preferences
+## Preferences
 
  These are the optional preferences:
 
@@ -54,7 +54,7 @@ The 'text' attribute can be a single string or an array of string. In case an ar
 
 **Note:** Each time/delay value should be set either on seconds (1s) or milisseconds (1000)
 
-##Dependencies
+## Dependencies
 This directives only depends on the core AngularJS file and on the CSS file provided (angular-typewrite.css) in order to replicate the cursor blinking effect.
 
 ## Demo
